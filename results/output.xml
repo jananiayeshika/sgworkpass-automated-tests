@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.11.2 on win32)" generated="20230512 10:58:08.464" rpa="false" schemaversion="3">
+<suite id="s1" name="Sgworkpass-Automated-Tests" source="C:\Users\JANANI\VSCodeProjects\sgworkpass-automated-tests">
+<suite id="s1-s1" name="Tests" source="C:\Users\JANANI\VSCodeProjects\sgworkpass-automated-tests\tests">
+<suite id="s1-s1-s1" name="Manual-Fin-Negative-Test" source="C:\Users\JANANI\VSCodeProjects\sgworkpass-automated-tests\tests\manual-fin-negative-test.robot">
+<test id="s1-s1-s1-t1" name="Verify That An EPOL Pass Holder Can See The 'No Record Found' Error Prompt When Enter The Special Pass FIN" line="30">
+<kw name="Launch SGWorkPass Android Application" library="execution-hooks" type="SETUP">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>127.0.0.1:4723</arg>
+<arg>platformName=Android</arg>
+<arg>platformVersion=${ANDROID_PLATFORM_VERSION}</arg>
+<arg>deviceName=${ANDROID_DEVICE_NAME}</arg>
+<arg>automationName=UiAutomator2</arg>
+<arg>app=${EXECDIR}/apps/android/${APK_FILE_NAME}.apk</arg>
+<arg>appPackage=sg.gov.mom.sgworkpass</arg>
+<arg>appActivity=MainActivity</arg>
+<arg>autoGrantPermissions=true</arg>
+<arg>noReset=true</arg>
+<arg>fullReset=false</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" starttime="20230512 10:58:09.332" endtime="20230512 10:58:24.153"/>
+</kw>
+<kw name="Set Appium Timeout" library="AppiumLibrary">
+<arg>30 s</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" starttime="20230512 10:58:24.154" endtime="20230512 10:58:24.154"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:09.331" endtime="20230512 10:58:24.154"/>
+</kw>
+<kw name="Enter FIN M3000018X And Check The Error Prompt" sourcename="Enter FIN ${fin} And Check The Error Prompt">
+<kw name="Click On 'Enter FIN' Tile" library="pass-holder-landing-page-objects">
+<kw name="Set Variable" library="BuiltIn">
+<var>${enterFinTile}</var>
+<arg>xpath=//*[@text='Enter FIN']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:58:24.157" level="INFO">${enterFinTile} = xpath=//*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:58:24.157" endtime="20230512 10:58:24.157"/>
+</kw>
+<kw name="Click Element ${enterFinTile} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Click Element ${locator} ${retryScale}">
+<doc>Click on a given element ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:58:25.634" level="INFO">xpath criteria: //*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:58:24.163" endtime="20230512 10:58:25.634"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:24.161" endtime="20230512 10:58:25.635"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Click Element</arg>
+<arg>${locator}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230512 10:58:25.639" level="INFO">Clicking element 'xpath=//*[@text='Enter FIN']'.</msg>
+<msg timestamp="20230512 10:58:26.383" level="INFO">xpath criteria: //*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:58:25.637" endtime="20230512 10:58:26.384"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:25.636" endtime="20230512 10:58:26.384"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:24.158" endtime="20230512 10:58:26.385"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:24.156" endtime="20230512 10:58:26.386"/>
+</kw>
+<kw name="Input FIN ${fin}" library="enter-fin-page-objects" sourcename="Input FIN ${fin}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${finTextBox}</var>
+<arg>xpath=//android.widget.EditText</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:58:26.389" level="INFO">${finTextBox} = xpath=//android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:58:26.388" endtime="20230512 10:58:26.389"/>
+</kw>
+<kw name="Input Text ${finTextBox} ${fin} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Input Text ${locator} ${text} ${retryScale}">
+<doc>Input text on a given text box ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:58:27.876" level="INFO">xpath criteria: //android.widget.EditText
+xpath criteria: //android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:58:26.392" endtime="20230512 10:58:27.877"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:26.391" endtime="20230512 10:58:27.878"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Input Text</arg>
+<arg>${locator}</arg>
+<arg>${text}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${text}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20230512 10:58:27.883" level="INFO">Typing text 'M3000018X' into text field 'xpath=//android.widget.EditText'</msg>
+<msg timestamp="20230512 10:58:29.264" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:58:27.880" endtime="20230512 10:58:29.265"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:27.878" endtime="20230512 10:58:29.265"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:26.389" endtime="20230512 10:58:29.266"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:26.387" endtime="20230512 10:58:29.266"/>
+</kw>
+<kw name="Click On 'Enter' Button" library="enter-fin-page-objects">
+<kw name="Set Variable" library="BuiltIn">
+<var>${enterButton}</var>
+<arg>xpath=//*[@text='Enter']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:58:29.270" level="INFO">${enterButton} = xpath=//*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:58:29.269" endtime="20230512 10:58:29.270"/>
+</kw>
+<kw name="Click Element ${enterButton} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Click Element ${locator} ${retryScale}">
+<doc>Click on a given element ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:58:30.535" level="INFO">xpath criteria: //*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:58:29.273" endtime="20230512 10:58:30.536"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:29.272" endtime="20230512 10:58:30.537"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Click Element</arg>
+<arg>${locator}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230512 10:58:30.541" level="INFO">Clicking element 'xpath=//*[@text='Enter']'.</msg>
+<msg timestamp="20230512 10:58:31.287" level="INFO">xpath criteria: //*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:58:30.538" endtime="20230512 10:58:31.288"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:30.537" endtime="20230512 10:58:31.288"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:29.271" endtime="20230512 10:58:31.288"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:29.267" endtime="20230512 10:58:31.289"/>
+</kw>
+<kw name="Error Prompt Title Should Be ${NO_RECORD_FOUND_ERROR_TITLE}" library="enter-fin-page-objects" sourcename="Error Prompt Title Should Be ${errorTitle}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${errorTitleLocator}</var>
+<arg>xpath=//*[@text='${errorTitle}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:58:31.292" level="INFO">${errorTitleLocator} = xpath=//*[@text='No Record Found']</msg>
+<status status="PASS" starttime="20230512 10:58:31.291" endtime="20230512 10:58:31.292"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${errorTitleLocator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:58:34.337" level="INFO">xpath criteria: //*[@text='No Record Found']
+xpath criteria: //*[@text='No Record Found']
+xpath criteria: //*[@text='No Record Found']</msg>
+<status status="PASS" starttime="20230512 10:58:31.293" endtime="20230512 10:58:34.339"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:31.289" endtime="20230512 10:58:34.340"/>
+</kw>
+<kw name="Error Prompt Message Should Be ${NO_RECORD_FOUND_ERROR_MESSAGE}" library="enter-fin-page-objects" sourcename="Error Prompt Message Should Be ${errorMessage}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${errorMessageLocator}</var>
+<arg>xpath=//*[@text='${errorMessage}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:58:34.343" level="INFO">${errorMessageLocator} = xpath=//*[@text='This app only works for checking MOM-issued passes.
+
+For MOM-issued Special Passes, you will need to scan the QR code on your card to check pass details and validity.']</msg>
+<status status="PASS" starttime="20230512 10:58:34.342" endtime="20230512 10:58:34.343"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${errorMessageLocator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:58:34.470" level="INFO">xpath criteria: //*[@text='This app only works for checking MOM-issued passes.
+
+For MOM-issued Special Passes, you will need to scan the QR code on your card to check pass details and validity.']</msg>
+<status status="PASS" starttime="20230512 10:58:34.344" endtime="20230512 10:58:34.471"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:34.340" endtime="20230512 10:58:34.472"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:24.155" endtime="20230512 10:58:34.473"/>
+</kw>
+<kw name="Quit Application" library="AppiumLibrary" type="TEARDOWN">
+<doc>*DEPRECATED!!* in selenium v4, check `Close Application` keyword.</doc>
+<msg timestamp="20230512 10:58:34.474" level="WARN">Keyword 'AppiumLibrary.Quit Application' is deprecated. in selenium v4, check `Close Application` keyword.</msg>
+<status status="PASS" starttime="20230512 10:58:34.474" endtime="20230512 10:58:34.725"/>
+</kw>
+<tag>Regression</tag>
+<tag>SGWP-TC-0076</tag>
+<status status="PASS" starttime="20230512 10:58:09.329" endtime="20230512 10:58:34.727"/>
+</test>
+<test id="s1-s1-s1-t2" name="Verify That An WPOL Pass Holder Can See The 'No Record Found' Error Prompt When Enter The Special Pass FIN" line="36">
+<kw name="Launch SGWorkPass Android Application" library="execution-hooks" type="SETUP">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>127.0.0.1:4723</arg>
+<arg>platformName=Android</arg>
+<arg>platformVersion=${ANDROID_PLATFORM_VERSION}</arg>
+<arg>deviceName=${ANDROID_DEVICE_NAME}</arg>
+<arg>automationName=UiAutomator2</arg>
+<arg>app=${EXECDIR}/apps/android/${APK_FILE_NAME}.apk</arg>
+<arg>appPackage=sg.gov.mom.sgworkpass</arg>
+<arg>appActivity=MainActivity</arg>
+<arg>autoGrantPermissions=true</arg>
+<arg>noReset=true</arg>
+<arg>fullReset=false</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" starttime="20230512 10:58:34.734" endtime="20230512 10:58:51.631"/>
+</kw>
+<kw name="Set Appium Timeout" library="AppiumLibrary">
+<arg>30 s</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" starttime="20230512 10:58:51.632" endtime="20230512 10:58:51.634"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:34.733" endtime="20230512 10:58:51.634"/>
+</kw>
+<kw name="Enter FIN F3000018T And Check The Error Prompt" sourcename="Enter FIN ${fin} And Check The Error Prompt">
+<kw name="Click On 'Enter FIN' Tile" library="pass-holder-landing-page-objects">
+<kw name="Set Variable" library="BuiltIn">
+<var>${enterFinTile}</var>
+<arg>xpath=//*[@text='Enter FIN']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:58:51.637" level="INFO">${enterFinTile} = xpath=//*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:58:51.636" endtime="20230512 10:58:51.637"/>
+</kw>
+<kw name="Click Element ${enterFinTile} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Click Element ${locator} ${retryScale}">
+<doc>Click on a given element ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:58:57.506" level="INFO">xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:58:51.639" endtime="20230512 10:58:57.506"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:51.638" endtime="20230512 10:58:57.507"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Click Element</arg>
+<arg>${locator}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230512 10:58:57.511" level="INFO">Clicking element 'xpath=//*[@text='Enter FIN']'.</msg>
+<msg timestamp="20230512 10:58:57.788" level="INFO">xpath criteria: //*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:58:57.509" endtime="20230512 10:58:57.789"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:57.507" endtime="20230512 10:58:57.789"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:51.637" endtime="20230512 10:58:57.790"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:51.636" endtime="20230512 10:58:57.790"/>
+</kw>
+<kw name="Input FIN ${fin}" library="enter-fin-page-objects" sourcename="Input FIN ${fin}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${finTextBox}</var>
+<arg>xpath=//android.widget.EditText</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:58:57.793" level="INFO">${finTextBox} = xpath=//android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:58:57.792" endtime="20230512 10:58:57.793"/>
+</kw>
+<kw name="Input Text ${finTextBox} ${fin} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Input Text ${locator} ${text} ${retryScale}">
+<doc>Input text on a given text box ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:58:58.693" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:58:57.796" endtime="20230512 10:58:58.693"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:57.794" endtime="20230512 10:58:58.693"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Input Text</arg>
+<arg>${locator}</arg>
+<arg>${text}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${text}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20230512 10:58:58.698" level="INFO">Typing text 'F3000018T' into text field 'xpath=//android.widget.EditText'</msg>
+<msg timestamp="20230512 10:58:59.522" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:58:58.695" endtime="20230512 10:58:59.523"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:58.694" endtime="20230512 10:58:59.523"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:57.793" endtime="20230512 10:58:59.523"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:57.791" endtime="20230512 10:58:59.524"/>
+</kw>
+<kw name="Click On 'Enter' Button" library="enter-fin-page-objects">
+<kw name="Set Variable" library="BuiltIn">
+<var>${enterButton}</var>
+<arg>xpath=//*[@text='Enter']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:58:59.526" level="INFO">${enterButton} = xpath=//*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:58:59.526" endtime="20230512 10:58:59.527"/>
+</kw>
+<kw name="Click Element ${enterButton} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Click Element ${locator} ${retryScale}">
+<doc>Click on a given element ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:59:00.262" level="INFO">xpath criteria: //*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:58:59.529" endtime="20230512 10:59:00.262"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:59.528" endtime="20230512 10:59:00.263"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Click Element</arg>
+<arg>${locator}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230512 10:59:00.268" level="INFO">Clicking element 'xpath=//*[@text='Enter']'.</msg>
+<msg timestamp="20230512 10:59:00.583" level="INFO">xpath criteria: //*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:59:00.265" endtime="20230512 10:59:00.583"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:00.263" endtime="20230512 10:59:00.583"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:59.527" endtime="20230512 10:59:00.584"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:59.524" endtime="20230512 10:59:00.585"/>
+</kw>
+<kw name="Error Prompt Title Should Be ${NO_RECORD_FOUND_ERROR_TITLE}" library="enter-fin-page-objects" sourcename="Error Prompt Title Should Be ${errorTitle}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${errorTitleLocator}</var>
+<arg>xpath=//*[@text='${errorTitle}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:59:00.587" level="INFO">${errorTitleLocator} = xpath=//*[@text='No Record Found']</msg>
+<status status="PASS" starttime="20230512 10:59:00.587" endtime="20230512 10:59:00.587"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${errorTitleLocator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:59:03.553" level="INFO">xpath criteria: //*[@text='No Record Found']
+xpath criteria: //*[@text='No Record Found']</msg>
+<status status="PASS" starttime="20230512 10:59:00.587" endtime="20230512 10:59:03.554"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:00.585" endtime="20230512 10:59:03.555"/>
+</kw>
+<kw name="Error Prompt Message Should Be ${NO_RECORD_FOUND_ERROR_MESSAGE}" library="enter-fin-page-objects" sourcename="Error Prompt Message Should Be ${errorMessage}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${errorMessageLocator}</var>
+<arg>xpath=//*[@text='${errorMessage}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:59:03.557" level="INFO">${errorMessageLocator} = xpath=//*[@text='This app only works for checking MOM-issued passes.
+
+For MOM-issued Special Passes, you will need to scan the QR code on your card to check pass details and validity.']</msg>
+<status status="PASS" starttime="20230512 10:59:03.556" endtime="20230512 10:59:03.557"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${errorMessageLocator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:59:03.668" level="INFO">xpath criteria: //*[@text='This app only works for checking MOM-issued passes.
+
+For MOM-issued Special Passes, you will need to scan the QR code on your card to check pass details and validity.']</msg>
+<status status="PASS" starttime="20230512 10:59:03.557" endtime="20230512 10:59:03.668"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:03.555" endtime="20230512 10:59:03.669"/>
+</kw>
+<status status="PASS" starttime="20230512 10:58:51.635" endtime="20230512 10:59:03.669"/>
+</kw>
+<kw name="Quit Application" library="AppiumLibrary" type="TEARDOWN">
+<doc>*DEPRECATED!!* in selenium v4, check `Close Application` keyword.</doc>
+<msg timestamp="20230512 10:59:03.673" level="WARN">Keyword 'AppiumLibrary.Quit Application' is deprecated. in selenium v4, check `Close Application` keyword.</msg>
+<status status="PASS" starttime="20230512 10:59:03.672" endtime="20230512 10:59:03.981"/>
+</kw>
+<tag>Regression</tag>
+<tag>SGWP-TC-0077</tag>
+<status status="PASS" starttime="20230512 10:58:34.730" endtime="20230512 10:59:03.982"/>
+</test>
+<test id="s1-s1-s1-t3" name="Verify That A User Can See An Error Message After Entering The Incorrect FIN" line="42">
+<kw name="Launch SGWorkPass Android Application" library="execution-hooks" type="SETUP">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>127.0.0.1:4723</arg>
+<arg>platformName=Android</arg>
+<arg>platformVersion=${ANDROID_PLATFORM_VERSION}</arg>
+<arg>deviceName=${ANDROID_DEVICE_NAME}</arg>
+<arg>automationName=UiAutomator2</arg>
+<arg>app=${EXECDIR}/apps/android/${APK_FILE_NAME}.apk</arg>
+<arg>appPackage=sg.gov.mom.sgworkpass</arg>
+<arg>appActivity=MainActivity</arg>
+<arg>autoGrantPermissions=true</arg>
+<arg>noReset=true</arg>
+<arg>fullReset=false</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" starttime="20230512 10:59:03.996" endtime="20230512 10:59:20.669"/>
+</kw>
+<kw name="Set Appium Timeout" library="AppiumLibrary">
+<arg>30 s</arg>
+<doc>Sets the timeout in seconds used by various keywords.</doc>
+<status status="PASS" starttime="20230512 10:59:20.669" endtime="20230512 10:59:20.670"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:03.995" endtime="20230512 10:59:20.671"/>
+</kw>
+<kw name="Click On 'Enter FIN' Tile" library="pass-holder-landing-page-objects">
+<kw name="Set Variable" library="BuiltIn">
+<var>${enterFinTile}</var>
+<arg>xpath=//*[@text='Enter FIN']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:59:20.674" level="INFO">${enterFinTile} = xpath=//*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:59:20.674" endtime="20230512 10:59:20.674"/>
+</kw>
+<kw name="Click Element ${enterFinTile} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Click Element ${locator} ${retryScale}">
+<doc>Click on a given element ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:59:26.106" level="INFO">xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']
+xpath criteria: //*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:59:20.677" endtime="20230512 10:59:26.107"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:20.676" endtime="20230512 10:59:26.108"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Click Element</arg>
+<arg>${locator}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230512 10:59:26.112" level="INFO">Clicking element 'xpath=//*[@text='Enter FIN']'.</msg>
+<msg timestamp="20230512 10:59:26.361" level="INFO">xpath criteria: //*[@text='Enter FIN']</msg>
+<status status="PASS" starttime="20230512 10:59:26.111" endtime="20230512 10:59:26.362"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:26.108" endtime="20230512 10:59:26.362"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:20.674" endtime="20230512 10:59:26.362"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:20.673" endtime="20230512 10:59:26.362"/>
+</kw>
+<kw name="Input FIN A1234567Q" library="enter-fin-page-objects" sourcename="Input FIN ${fin}">
+<kw name="Set Variable" library="BuiltIn">
+<var>${finTextBox}</var>
+<arg>xpath=//android.widget.EditText</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:59:26.365" level="INFO">${finTextBox} = xpath=//android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:59:26.365" endtime="20230512 10:59:26.366"/>
+</kw>
+<kw name="Input Text ${finTextBox} ${fin} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Input Text ${locator} ${text} ${retryScale}">
+<doc>Input text on a given text box ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:59:27.028" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:59:26.368" endtime="20230512 10:59:27.028"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:26.368" endtime="20230512 10:59:27.029"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Input Text</arg>
+<arg>${locator}</arg>
+<arg>${text}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${text}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20230512 10:59:27.033" level="INFO">Typing text 'A1234567Q' into text field 'xpath=//android.widget.EditText'</msg>
+<msg timestamp="20230512 10:59:27.849" level="INFO">xpath criteria: //android.widget.EditText</msg>
+<status status="PASS" starttime="20230512 10:59:27.031" endtime="20230512 10:59:27.850"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:27.029" endtime="20230512 10:59:27.850"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:26.366" endtime="20230512 10:59:27.850"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:26.364" endtime="20230512 10:59:27.851"/>
+</kw>
+<kw name="Click On 'Enter' Button" library="enter-fin-page-objects">
+<kw name="Set Variable" library="BuiltIn">
+<var>${enterButton}</var>
+<arg>xpath=//*[@text='Enter']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:59:27.855" level="INFO">${enterButton} = xpath=//*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:59:27.854" endtime="20230512 10:59:27.855"/>
+</kw>
+<kw name="Click Element ${enterButton} ${SMALL_RETRY_COUNT}" library="common-keywords" sourcename="Click Element ${locator} ${retryScale}">
+<doc>Click on a given element ...</doc>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Wait Until Element Is Visible</arg>
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${locator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:59:28.583" level="INFO">xpath criteria: //*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:59:27.859" endtime="20230512 10:59:28.583"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:27.858" endtime="20230512 10:59:28.584"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${retryScale}</arg>
+<arg>${RETRY_DELAY}</arg>
+<arg>Click Element</arg>
+<arg>${locator}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${locator}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20230512 10:59:28.588" level="INFO">Clicking element 'xpath=//*[@text='Enter']'.</msg>
+<msg timestamp="20230512 10:59:28.870" level="INFO">xpath criteria: //*[@text='Enter']</msg>
+<status status="PASS" starttime="20230512 10:59:28.585" endtime="20230512 10:59:28.871"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:28.584" endtime="20230512 10:59:28.872"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:27.856" endtime="20230512 10:59:28.872"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:27.853" endtime="20230512 10:59:28.873"/>
+</kw>
+<kw name="Check ${INCORRECT_FIN_ERROR_MESSAGE} Error Message Is Visible" library="common-page-objects" sourcename="Check ${errorMessage} Error Message Is Visible">
+<kw name="Set Variable" library="BuiltIn">
+<var>${errorMessageLocator}</var>
+<arg>xpath=//*[@text='${errorMessage}']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230512 10:59:28.878" level="INFO">${errorMessageLocator} = xpath=//*[@text='Incorrect FIN. Please enter the FIN in the correct format, e.g. G1234567A.']</msg>
+<status status="PASS" starttime="20230512 10:59:28.877" endtime="20230512 10:59:28.878"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="AppiumLibrary">
+<arg>${errorMessageLocator}</arg>
+<arg>${TIMEOUT}</arg>
+<doc>Waits until element specified with `locator` is visible.</doc>
+<msg timestamp="20230512 10:59:29.673" level="INFO">xpath criteria: //*[@text='Incorrect FIN. Please enter the FIN in the correct format, e.g. G1234567A.']</msg>
+<status status="PASS" starttime="20230512 10:59:28.879" endtime="20230512 10:59:29.673"/>
+</kw>
+<status status="PASS" starttime="20230512 10:59:28.876" endtime="20230512 10:59:29.674"/>
+</kw>
+<kw name="Quit Application" library="AppiumLibrary" type="TEARDOWN">
+<doc>*DEPRECATED!!* in selenium v4, check `Close Application` keyword.</doc>
+<msg timestamp="20230512 10:59:29.678" level="WARN">Keyword 'AppiumLibrary.Quit Application' is deprecated. in selenium v4, check `Close Application` keyword.</msg>
+<status status="PASS" starttime="20230512 10:59:29.677" endtime="20230512 10:59:29.928"/>
+</kw>
+<tag>Regression</tag>
+<tag>SGWP-TC-0078</tag>
+<status status="PASS" starttime="20230512 10:59:03.990" endtime="20230512 10:59:29.929"/>
+</test>
+<status status="PASS" starttime="20230512 10:58:08.533" endtime="20230512 10:59:29.934"/>
+</suite>
+<status status="PASS" starttime="20230512 10:58:08.528" endtime="20230512 10:59:29.938"/>
+</suite>
+<status status="PASS" starttime="20230512 10:58:08.471" endtime="20230512 10:59:29.943"/>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0" skip="0">Regression</stat>
+<stat pass="1" fail="0" skip="0">SGWP-TC-0076</stat>
+<stat pass="1" fail="0" skip="0">SGWP-TC-0077</stat>
+<stat pass="1" fail="0" skip="0">SGWP-TC-0078</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" skip="0" id="s1" name="Sgworkpass-Automated-Tests">Sgworkpass-Automated-Tests</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1" name="Tests">Sgworkpass-Automated-Tests.Tests</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s1-s1" name="Manual-Fin-Negative-Test">Sgworkpass-Automated-Tests.Tests.Manual-Fin-Negative-Test</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20230512 10:58:34.474" level="WARN">Keyword 'AppiumLibrary.Quit Application' is deprecated. in selenium v4, check `Close Application` keyword.</msg>
+<msg timestamp="20230512 10:59:03.673" level="WARN">Keyword 'AppiumLibrary.Quit Application' is deprecated. in selenium v4, check `Close Application` keyword.</msg>
+<msg timestamp="20230512 10:59:29.678" level="WARN">Keyword 'AppiumLibrary.Quit Application' is deprecated. in selenium v4, check `Close Application` keyword.</msg>
+</errors>
+</robot>
